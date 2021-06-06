@@ -33,12 +33,12 @@ import java.util.Arrays;
 public class Runner {
 
     public static void main(String[] args) {
-        if (args.length != 3) {
+        if (args.length != 4) {
             System.out.println("[ERROR] " + Messages.NOT_ENOUGH_ARGUMENTS + ": \n" +
                     "\t\t\t1) game name (for example 'bomberman')\n" +
                     "\t\t\t2) hero sprite name (for example 'BOMBERMAN')\n" +
                     "\t\t\t3) board url (for example 'http://codenjoy.com:80/codenjoy-contest/board/player/playerId?code=1234567890123456789')\n" +
-                    "\t\t\t4) rules directory (for example 'games/bomberman/rules').\n" +
+                    "\t\t\t4) rules directory (for example './rules/').\n" +
                     "\t\tArguments are: " + Arrays.toString(args));
             return;
         }
