@@ -9,4 +9,3 @@ set SKIP_TESTS=true
 set DEBUG=false
 set MAVEN_OPTS="-Dmaven.repo.local=%ROOT%\..\.m2\repository"
 set CODE_PAGE=65001
-
