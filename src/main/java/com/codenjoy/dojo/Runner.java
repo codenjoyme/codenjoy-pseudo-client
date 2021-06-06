@@ -28,8 +28,11 @@ import com.codenjoy.dojo.pseudo.Messages;
 import com.codenjoy.dojo.pseudo.RuleBoard;
 import com.codenjoy.dojo.pseudo.YourSolverLite;
 import com.codenjoy.dojo.services.RandomDice;
+import com.codenjoy.dojo.services.printer.CharElements;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
 
 public class Runner {
 
@@ -42,12 +45,13 @@ public class Runner {
             return;
         }
 
+        List<CharElements> values = Arrays.asList(Element.values());
+        Function<Character, CharElements> mapper = ch -> Element.valueOf(ch);
+        Element hero = Element.BOMB_BOMBERMAN;
+
         WebSocketRunner.runClient(args[0],
-                new YourSolverLite(args[1],
-                        Arrays.asList(Element.values()),
-                        new RandomDice()),
-                new RuleBoard(ch -> Element.valueOf(ch),
-                        Element.BOMB_BOMBERMAN)
+                new YourSolverLite(args[1], values, new RandomDice()),
+                new RuleBoard(mapper, hero)
         );
     }
 
