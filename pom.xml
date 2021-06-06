@@ -9,13 +9,19 @@
     <version>1.1.1</version>
 
     <properties>
-        <commons-collections.version>4.4</commons-collections.version>
+        <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <spring-boot-dependencies.version>2.1.18.RELEASE</spring-boot-dependencies.version>
 
         <!-- please do not update these versions
              they are not in spring boot  -->
+        <commons-collections.version>4.4</commons-collections.version>
+        <!-- end -->
 
+        <!-- Maven -->
+        <maven-compiler.version>3.8.1</maven-compiler.version>
+        <maven-license.version>2.0.0</maven-license.version>
     </properties>
 
     <repositories>
@@ -64,7 +70,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <resources>
             <resource>
@@ -88,6 +93,41 @@
                 </includes>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler.version}</version>
+                <configuration>
+                    <encoding>utf8</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${maven-license.version}</version>
+                <configuration>
+                    <licenseName>gpl_v3</licenseName>
+                    <licenseResolver>${project.baseUri}/src/license</licenseResolver>
+                    <organizationName>Codenjoy</organizationName>
+                    <projectName>Codenjoy - it's a dojo-like platform from developers to developers.</projectName>
+                    <inceptionYear>2018</inceptionYear>
+                    <canUpdateCopyright>false</canUpdateCopyright>
+                    <canUpdateDescription>false</canUpdateDescription>
+                    <canUpdateLicense>false</canUpdateLicense>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>first</id>
+                        <goals>
+                            <goal>update-file-header</goal>
+                        </goals>
+                        <phase>process-sources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
-
 </project>

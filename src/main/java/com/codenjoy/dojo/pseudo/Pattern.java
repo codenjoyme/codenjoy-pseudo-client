@@ -22,7 +22,7 @@ package com.codenjoy.dojo.pseudo;
  * #L%
  */
 
-import com.codenjoy.dojo.utils.TestUtils;
+import com.codenjoy.dojo.client.Utils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
@@ -66,7 +66,7 @@ public class Pattern {
     @Override
     public String toString() {
         return String.format("\n" +
-                TestUtils.injectN(pattern) +
+                Utils.injectN(pattern) +
                 "synonyms: " +
                 synonyms);
     }

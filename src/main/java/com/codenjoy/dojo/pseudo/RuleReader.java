@@ -22,9 +22,8 @@ package com.codenjoy.dojo.pseudo;
  * #L%
  */
 
-import com.codenjoy.dojo.client.Encoding;
+import com.codenjoy.dojo.client.WebSocketRunner;
 import com.codenjoy.dojo.services.Direction;
-import com.google.common.primitives.Chars;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
@@ -53,7 +52,7 @@ public class RuleReader {
     public void load(Rules rules, File file) {
         validate(file);
         
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), Encoding.UTF8))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), WebSocketRunner.UTF8))) {
 
             Supplier<String> lines = () -> {
                 try {
@@ -249,7 +248,7 @@ public class RuleReader {
         allow.add(RuleBoard.ANY_CHAR);
         allow.addAll(pattern.synonyms().chars());
 
-        return new LinkedList<>(Chars.asList(pattern.pattern().toCharArray())).stream()
+        return new LinkedList<>(Arrays.asList(pattern.pattern().toCharArray())).stream()
                 .filter(ch -> !allow.contains(ch))
                 .count() == 0;
     }

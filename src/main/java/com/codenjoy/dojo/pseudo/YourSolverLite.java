@@ -22,8 +22,8 @@ package com.codenjoy.dojo.pseudo;
  * #L%
  */
 
-import com.codenjoy.dojo.client.Encoding;
 import com.codenjoy.dojo.client.Solver;
+import com.codenjoy.dojo.client.WebSocketRunner;
 import com.codenjoy.dojo.services.Dice;
 
 import java.io.IOException;
@@ -41,7 +41,7 @@ public class YourSolverLite implements Solver<RuleBoard> {
 
     private void println(Message message) {
         try {
-            new PrintStream(System.out, true, Encoding.UTF8).println(message.toString());
+            new PrintStream(System.out, true, WebSocketRunner.UTF8).println(message.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
