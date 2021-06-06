@@ -69,8 +69,8 @@ public class GameElementReader implements ElementReader {
     }
 
     @Override
-    public List<CharElement> values() {
-        return Arrays.asList(values);
+    public CharElement[] values() {
+        return Arrays.copyOf(values, values.length);
     }
 
     @Override

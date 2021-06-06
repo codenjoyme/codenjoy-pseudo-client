@@ -193,7 +193,7 @@ public class RuleReader {
     }
 
     private String invert(String chars) {
-        return elements.values().stream()
+        return Arrays.stream(elements.values())
                 .map(el -> el.ch())
                 .filter(ch -> chars.indexOf(ch) == -1)
                 .collect(asString());
@@ -242,7 +242,7 @@ public class RuleReader {
     }
 
     private boolean isValidPatternSymbols(Pattern pattern) {
-        List<Character> allow = elements.values().stream()
+        List<Character> allow = Arrays.stream(elements.values())
                 .map(e -> e.ch())
                 .collect(toList());
         allow.add(RuleBoard.ANY_CHAR);
