@@ -23,6 +23,7 @@ package com.codenjoy.dojo.bomberman.client.simple;
  */
 
 import com.codenjoy.dojo.client.AbstractBoard;
+import com.codenjoy.dojo.games.bomberman.Element;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.printer.CharElements;
 
@@ -47,6 +48,14 @@ public class RuleBoard extends AbstractBoard<CharElements> {
         } catch (IllegalArgumentException e) {
             return null;
         }
+    }
+
+    @Override
+    public CharElements getAt(int x, int y) {
+        if (isOutOfField(x, y)) {
+            return Element.WALL;
+        }
+        return super.getAt(x, y);
     }
 
     @Override
