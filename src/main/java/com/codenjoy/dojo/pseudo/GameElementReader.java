@@ -9,8 +9,10 @@ import java.util.function.Function;
 
 public class GameElementReader implements ElementReader {
 
-    public GameElementReader(String game) {
-        // TODO
+    private String hero;
+
+    public GameElementReader(String game, String hero) {
+        this.hero = hero;
     }
 
     @Override
@@ -20,11 +22,29 @@ public class GameElementReader implements ElementReader {
 
     @Override
     public Function<Character, CharElements> mapper() {
-        return ch -> Element.valueOf(ch);
+        return ch -> valueOf(ch);
+    }
+
+    public CharElements valueOf(char ch) {
+        for (CharElements el : values()) {
+            if (el.ch() == ch) {
+                return el;
+            }
+        }
+        throw new IllegalArgumentException("No such element with char: " + ch);
+    }
+
+    public CharElements valueOf(String name) {
+        for (CharElements el : values()) {
+            if (el.name().equals(name)) {
+                return el;
+            }
+        }
+        throw new IllegalArgumentException("No such element with name: " + name);
     }
 
     @Override
-    public Element hero() {
-        return Element.BOMBERMAN;
+    public CharElements hero() {
+        return valueOf(hero);
     }
 }

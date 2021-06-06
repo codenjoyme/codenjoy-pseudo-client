@@ -34,19 +34,21 @@ public class Runner {
 
     public static void main(String[] args) {
         if (args.length != 3) {
-            System.out.println("[ERROR] " + Messages.BAD_FORMAT_PLEASE_RUN_PROGRAM_WITH_3_ARGUMENTS + ": \n" +
+            System.out.println("[ERROR] " + Messages.NOT_ENOUGH_ARGUMENTS + ": \n" +
                     "\t\t\t1) game name (for example 'bomberman')\n" +
-                    "\t\t\t2) board url (for example 'http://codenjoy.com:80/codenjoy-contest/board/player/playerId?code=1234567890123456789')\n" +
-                    "\t\t\t3) rules directory (for example 'games/bomberman/rules').\n" +
+                    "\t\t\t2) hero sprite name (for example 'BOMBERMAN')\n" +
+                    "\t\t\t3) board url (for example 'http://codenjoy.com:80/codenjoy-contest/board/player/playerId?code=1234567890123456789')\n" +
+                    "\t\t\t4) rules directory (for example 'games/bomberman/rules').\n" +
                     "\t\tArguments are: " + Arrays.toString(args));
             return;
         }
 
         String game = args[0];
-        String url = args[1];
-        String rules = args[2];
+        String hero = args[1];
+        String url = args[2];
+        String rules = args[3];
 
-        YourSolverLite solver = new YourSolverLite(rules, new GameElementReader(game), new RandomDice());
+        YourSolverLite solver = new YourSolverLite(rules, new GameElementReader(game, hero), new RandomDice());
         WebSocketRunner.runClient(url, solver, solver.getBoard());
     }
 
