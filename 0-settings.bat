@@ -1,14 +1,12 @@
 set GAME_TO_RUN=bomberman
-set BOARD_URL=https://dojorena.io/codenjoy-contest/board/player/playerId?code=12345678901234567890
+set PSEUDO_HERO_ELEMENTS=BOMBERMAN,BOMB_BOMBERMAN,DEAD_BOMBERMAN
+set BOARD_URL=http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000
 
-set JAVA_HOME=%CD%\jdk8
-set M2_HOME=%CD%\maven
-set APP_HOME=%CD%\sources\%GAME_TO_RUN%
-set ENGINE_HOME=%CD%\sources\engine
-set RULES_HOME=%CD%\rules
 set ROOT=%CD%
+set PSEUDO_CLIENT_HOME=%ROOT%
+set PSEUDO_RULES=%PSEUDO_CLIENT_HOME%\rules
 set SKIP_TESTS=true
 set DEBUG=false
-set MAVEN_OPTS="-Dmaven.repo.local=%M2_HOME%\.m2\repository"
+set MAVEN_OPTS="-Dmaven.repo.local=%ROOT%\..\.m2\repository"
 set CODE_PAGE=65001
 
