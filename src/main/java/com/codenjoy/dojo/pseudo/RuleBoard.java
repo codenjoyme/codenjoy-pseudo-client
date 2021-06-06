@@ -71,10 +71,10 @@ public class RuleBoard extends AbstractBoard<CharElement> {
     
     // TODO refactor me
     public boolean isNearHero(Pattern pattern) {
-        Point meAtMap = this.getFirst(elements.hero());
+        Point meAtMap = this.getFirst(elements.heroElements());
 
         RuleBoard part = this.clone(pattern.pattern());
-        Point meAtPart = part.getFirst(elements.hero());
+        Point meAtPart = part.getFirst(elements.heroElements());
 
         Point corner = meAtMap.relative(meAtPart);
 
@@ -106,6 +106,6 @@ public class RuleBoard extends AbstractBoard<CharElement> {
     }
 
     public boolean isGameOver() {
-        return get(elements.hero()).isEmpty();
+        return get(elements.heroElements()).isEmpty();
     }
 }

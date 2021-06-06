@@ -30,15 +30,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+import static java.util.stream.Collectors.toList;
+
 public class GameElementReader implements ElementReader {
 
-    private String hero;
+    private List<String> heroElements;
     private CharElement[] values;
 
-    public GameElementReader(String game, String hero) {
+    public GameElementReader(String game, List<String> heroElements) {
         Class<?> clazz = loadClass(game);
         this.values = getEnumValues(clazz);
-        this.hero = hero;
+        this.heroElements = heroElements;
     }
 
     private static <E extends Enum> E[] getEnumValues(Class<?> enumClass) {
@@ -95,7 +97,10 @@ public class GameElementReader implements ElementReader {
     }
 
     @Override
-    public CharElement hero() {
-        return valueOf(hero);
+    public CharElement[] heroElements() {
+        return heroElements.stream()
+                .map(name -> valueOf(name))
+                .collect(toList())
+                .toArray(CharElement[]::new);
     }
 }

@@ -33,5 +33,5 @@ public interface ElementReader {
 
     Function<Character, CharElement> mapper();
 
-    CharElement hero();
+    CharElement[] heroElements();
 }

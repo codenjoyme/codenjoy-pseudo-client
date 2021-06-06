@@ -22,9 +22,14 @@ package com.codenjoy.dojo.pseudo;
  * #L%
  */
 
+import java.util.Arrays;
+
 public class TestElementReader extends GameElementReader{
 
     public TestElementReader() {
-        super("bomberman", "BOMBERMAN");
+        super("bomberman",
+                Arrays.asList("BOMBERMAN",
+                        "BOMB_BOMBERMAN",
+                        "DEAD_BOMBERMAN"));
     }
 }

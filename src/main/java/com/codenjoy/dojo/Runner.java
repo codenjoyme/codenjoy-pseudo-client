@@ -29,6 +29,7 @@ import com.codenjoy.dojo.pseudo.YourSolverLite;
 import com.codenjoy.dojo.services.RandomDice;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Runner {
 
@@ -36,7 +37,7 @@ public class Runner {
         if (args.length != 4) {
             System.out.println("[ERROR] " + Messages.NOT_ENOUGH_ARGUMENTS + ": \n" +
                     "\t\t\t1) game name (for example 'bomberman')\n" +
-                    "\t\t\t2) hero sprite names (for example 'BOMBERMAN,')\n" +
+                    "\t\t\t2) hero sprite names (for example 'BOMBERMAN,BOMB_BOMBERMAN,DEAD_BOMBERMAN')\n" +
                     "\t\t\t3) board url (for example 'http://codenjoy.com:80/codenjoy-contest/board/player/playerId?code=1234567890123456789')\n" +
                     "\t\t\t4) rules directory (for example './rules/').\n" +
                     "\t\tArguments are: " + Arrays.toString(args));
@@ -44,12 +45,11 @@ public class Runner {
         }
 
         String game = args[0];
-        String hero = args[1];
+        List<String> heroes = Arrays.asList(args[1].split(","));
         String url = args[2];
         String rules = args[3];
 
-        YourSolverLite solver = new YourSolverLite(rules, new GameElementReader(game, hero), new RandomDice());
+        YourSolverLite solver = new YourSolverLite(rules, new GameElementReader(game, heroes), new RandomDice());
         WebSocketRunner.runClient(url, solver, solver.getBoard());
     }
-
 }
