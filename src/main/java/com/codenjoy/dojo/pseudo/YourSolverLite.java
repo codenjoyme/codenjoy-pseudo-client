@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.bomberman.client.simple;
+package com.codenjoy.dojo.pseudo;
 
 /*-
  * #%L

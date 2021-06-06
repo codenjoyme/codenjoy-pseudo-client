@@ -22,11 +22,11 @@ package com.codenjoy.dojo;
  * #L%
  */
 
-import com.codenjoy.dojo.bomberman.client.simple.Messages;
-import com.codenjoy.dojo.bomberman.client.simple.RuleBoard;
-import com.codenjoy.dojo.bomberman.client.simple.YourSolverLite;
 import com.codenjoy.dojo.client.WebSocketRunner;
 import com.codenjoy.dojo.games.bomberman.Element;
+import com.codenjoy.dojo.pseudo.Messages;
+import com.codenjoy.dojo.pseudo.RuleBoard;
+import com.codenjoy.dojo.pseudo.YourSolverLite;
 import com.codenjoy.dojo.services.RandomDice;
 
 import java.util.Arrays;

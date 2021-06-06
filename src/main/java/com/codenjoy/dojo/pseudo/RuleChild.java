@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.bomberman.client.simple;
+package com.codenjoy.dojo.pseudo;
 
 /*-
  * #%L
@@ -26,9 +26,28 @@ import com.codenjoy.dojo.services.Direction;
 
 import java.util.List;
 
-public interface Rule {
+public class RuleChild implements Rule {
 
-    List<Direction> directions(RuleBoard board);
+    private Pattern pattern;
+    private List<Direction> directions;
 
-    Rule findFor(RuleBoard board);
+    public RuleChild(Pattern pattern, List<Direction> directions) {
+        this.pattern = pattern;
+        this.directions = directions;
+    }
+
+    @Override
+    public List<Direction> directions(RuleBoard board) {
+        return directions;
+    }
+
+    @Override
+    public Rule findFor(RuleBoard board) {
+        return board.isNearHero(pattern) ? this : null;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[%s \n >>> %s]", pattern, directions);
+    }
 }

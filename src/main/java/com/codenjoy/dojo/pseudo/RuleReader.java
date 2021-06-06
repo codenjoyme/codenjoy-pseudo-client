@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.bomberman.client.simple;
+package com.codenjoy.dojo.pseudo;
 
 /*-
  * #%L
@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
-import static com.codenjoy.dojo.bomberman.client.simple.Messages.*;
+import static com.codenjoy.dojo.pseudo.Messages.*;
 import static java.util.stream.Collectors.toList;
 
 public class RuleReader {

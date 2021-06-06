@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.bomberman.client.simple;
+package com.codenjoy.dojo.pseudo;
 
 /*-
  * #%L
@@ -22,37 +22,33 @@ package com.codenjoy.dojo.bomberman.client.simple;
  * #L%
  */
 
-import java.util.Collection;
+import com.codenjoy.dojo.services.Direction;
+
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
-import static java.util.stream.Collectors.toList;
+public class RuleNode implements Rule {
 
-public class Synonyms {
-    private Map<Character, List<Character>> map;
+    private Pattern pattern;
+    private Rules rules;
 
-    public Synonyms() {
-        map = new TreeMap<>();
-    }
-    
-    public void add(Character synonym, String characters) {
-        map.put(synonym, 
-                characters.chars()
-                    .mapToObj(c -> (char) c)
-                        .collect(toList()));
-    }
-    
-    public boolean match(Character mask, char real) {
-        return map.containsKey(mask) && map.get(mask).contains(real);     
+    public RuleNode(Pattern pattern, Rules rules) {
+        this.pattern = pattern;
+        this.rules = rules;
     }
 
-    public Collection<Character> chars() {
-        return map.keySet();
+    @Override
+    public List<Direction> directions(RuleBoard board) {
+        return rules.process(board);
+    }
+
+    @Override
+    public Rule findFor(RuleBoard board) {
+        return rules.findFor(board)
+                .orElse(null);
     }
 
     @Override
     public String toString() {
-        return map.toString();
+        return String.format("[%s > %s]", pattern, rules.toString());
     }
 }

@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.bomberman.client.simple;
+package com.codenjoy.dojo.pseudo;
 
 /*-
  * #%L
@@ -24,31 +24,11 @@ package com.codenjoy.dojo.bomberman.client.simple;
 
 import com.codenjoy.dojo.services.Direction;
 
-import java.util.List;
+import java.util.Arrays;
 
-public class RuleNode implements Rule {
-
-    private Pattern pattern;
-    private Rules rules;
-
-    public RuleNode(Pattern pattern, Rules rules) {
-        this.pattern = pattern;
-        this.rules = rules;
-    }
-
-    @Override
-    public List<Direction> directions(RuleBoard board) {
-        return rules.process(board);
-    }
-
-    @Override
-    public Rule findFor(RuleBoard board) {
-        return rules.findFor(board)
-                .orElse(null);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("[%s > %s]", pattern, rules.toString());
+public class RuleStop extends RuleChild {
+    
+    public RuleStop() {
+        super(new Pattern(), Arrays.asList(Direction.STOP));
     }
 }

@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.bomberman.client.simple;
+package com.codenjoy.dojo.pseudo;
 
 /*-
  * #%L
@@ -32,7 +32,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static com.codenjoy.dojo.bomberman.client.simple.RuleReader.MAIN_RULE_FILE_NAME;
+import static com.codenjoy.dojo.pseudo.RuleReader.MAIN_RULE_FILE_NAME;
 
 public class Processor {
 

@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.bomberman.client.simple;
+package com.codenjoy.dojo.pseudo;
 
 /*-
  * #%L
@@ -23,13 +23,12 @@ package com.codenjoy.dojo.bomberman.client.simple;
  */
 
 import com.codenjoy.dojo.services.Direction;
-import org.apache.commons.lang3.StringUtils;
 
-import java.util.Arrays;
+import java.util.List;
 
-public class RuleStop extends RuleChild {
-    
-    public RuleStop() {
-        super(new Pattern(), Arrays.asList(Direction.STOP));
-    }
+public interface Rule {
+
+    List<Direction> directions(RuleBoard board);
+
+    Rule findFor(RuleBoard board);
 }
