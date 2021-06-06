@@ -55,7 +55,7 @@ public class Processor {
     }
 
     public Direction next(Board board) {
-        if (board.isMyBombermanDead()) {
+        if (board.isGameOver()) {
             return Direction.STOP;
         }
         
