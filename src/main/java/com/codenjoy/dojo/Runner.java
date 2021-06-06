@@ -43,8 +43,11 @@ public class Runner {
         }
 
         WebSocketRunner.runClient(args[0],
-                new YourSolverLite(args[1], new RandomDice()),
-                new RuleBoard(ch -> Element.valueOf(ch), Element.BOMB_BOMBERMAN)
+                new YourSolverLite(args[1],
+                        Arrays.asList(Element.values()),
+                        new RandomDice()),
+                new RuleBoard(ch -> Element.valueOf(ch),
+                        Element.BOMB_BOMBERMAN)
         );
     }
 

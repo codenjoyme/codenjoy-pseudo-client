@@ -22,12 +22,15 @@ package com.codenjoy.dojo.bomberman.client.simple;
  * #L%
  */
 
+import com.codenjoy.dojo.games.bomberman.Element;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
+import com.codenjoy.dojo.services.printer.CharElements;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.nio.file.FileSystems;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -53,9 +56,9 @@ public class ProcessorTest extends AbstractRuleReaderTest {
         messages = new LinkedList<>();
         board = mock(RuleBoard.class);
         
-        processor = new Processor("", mock(Dice.class), this.messages::add) {
+        processor = new Processor("", Arrays.asList(Element.values()), mock(Dice.class), this.messages::add) {
             @Override
-            protected RuleReader getReader() {
+            protected RuleReader getReader(List<CharElements> elements) {
                 return reader;
             }
         };

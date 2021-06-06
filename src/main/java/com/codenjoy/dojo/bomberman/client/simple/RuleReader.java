@@ -23,8 +23,8 @@ package com.codenjoy.dojo.bomberman.client.simple;
  */
 
 import com.codenjoy.dojo.client.Encoding;
-import com.codenjoy.dojo.games.bomberman.Element;
 import com.codenjoy.dojo.services.Direction;
+import com.codenjoy.dojo.services.printer.CharElements;
 import com.google.common.primitives.Chars;
 import org.apache.commons.lang3.StringUtils;
 
@@ -45,6 +45,11 @@ public class RuleReader {
     public static final String MAIN_RULE_FILE_NAME = "/main.rule";
     
     private List<Message> errors = new LinkedList<>();
+    private List<CharElements> elements;
+
+    public RuleReader(List<CharElements> elements) {
+        this.elements = elements;
+    }
 
     public void load(Rules rules, File file) {
         validate(file);
@@ -190,7 +195,7 @@ public class RuleReader {
     }
 
     private String invert(String chars) {
-        return Arrays.stream(Element.values())
+        return elements.stream()
                 .map(el -> el.ch())
                 .filter(ch -> chars.indexOf(ch) == -1)
                 .collect(asString());
@@ -239,7 +244,7 @@ public class RuleReader {
     }
 
     private boolean isValidPatternSymbols(Pattern pattern) {
-        List<Character> allow = Arrays.stream(Element.values())
+        List<Character> allow = elements.stream()
                 .map(e -> e.ch())
                 .collect(toList());
         allow.add(RuleBoard.ANY_CHAR);

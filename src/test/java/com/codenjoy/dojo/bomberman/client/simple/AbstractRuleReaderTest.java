@@ -22,6 +22,7 @@ package com.codenjoy.dojo.bomberman.client.simple;
  * #L%
  */
 
+import com.codenjoy.dojo.games.bomberman.Element;
 import org.junit.Before;
 
 import java.io.File;
@@ -50,7 +51,7 @@ public abstract class AbstractRuleReaderTest {
 
         cleanLns();
         
-        reader = new RuleReader() {
+        reader = new RuleReader(Arrays.asList(Element.values())) {
             @Override
             public void load(Rules rules, File file) {
                 subFiles.add(file);

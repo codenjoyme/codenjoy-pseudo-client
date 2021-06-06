@@ -22,12 +22,14 @@ package com.codenjoy.dojo.bomberman.client.simple;
  * #L%
  */
 
+import com.codenjoy.dojo.games.bomberman.Element;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
 import java.nio.file.FileSystems;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -42,7 +44,7 @@ public class RuleReaderFileTest {
     @Before
     public void setup() {
         // given
-        reader = new RuleReader();
+        reader = new RuleReader(Arrays.asList(Element.values()));
         rules = new Rules(message -> {});
     }
     

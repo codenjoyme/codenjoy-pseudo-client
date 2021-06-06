@@ -25,16 +25,18 @@ package com.codenjoy.dojo.bomberman.client.simple;
 import com.codenjoy.dojo.client.Encoding;
 import com.codenjoy.dojo.client.Solver;
 import com.codenjoy.dojo.services.Dice;
+import com.codenjoy.dojo.services.printer.CharElements;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.List;
 
 public class YourSolverLite implements Solver<RuleBoard> {
 
     private Processor processor;
 
-    public YourSolverLite(String rulesPlace, Dice dice) {
-        this.processor = new Processor(rulesPlace, dice, this::println);
+    public YourSolverLite(String rulesPlace, List<CharElements> elements, Dice dice) {
+        this.processor = new Processor(rulesPlace, elements, dice, this::println);
     }
 
     private void println(Message message) {

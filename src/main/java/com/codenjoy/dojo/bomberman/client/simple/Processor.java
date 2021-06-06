@@ -24,10 +24,12 @@ package com.codenjoy.dojo.bomberman.client.simple;
 
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
+import com.codenjoy.dojo.services.printer.CharElements;
 
 import java.io.File;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.function.Consumer;
 
 import static com.codenjoy.dojo.bomberman.client.simple.RuleReader.MAIN_RULE_FILE_NAME;
@@ -41,16 +43,16 @@ public class Processor {
     private Deque<Direction> commands;
     private Rules rules;
 
-    public Processor(String rulesPlace, Dice dice, Consumer<Message> console) {
+    public Processor(String rulesPlace, List<CharElements> elements, Dice dice, Consumer<Message> console) {
         rulesFile = new File(rulesPlace + MAIN_RULE_FILE_NAME);
         this.dice = dice;
         commands = new LinkedList<>();
-        reader = getReader();
+        reader = getReader(elements);
         this.console = console;
     }
 
-    protected RuleReader getReader() {
-        return new RuleReader();
+    protected RuleReader getReader(List<CharElements> elements) {
+        return new RuleReader(elements);
     }
 
     public Direction next(RuleBoard board) {
