@@ -24,7 +24,6 @@ package com.codenjoy.dojo.pseudo;
 
 import com.codenjoy.dojo.client.Encoding;
 import com.codenjoy.dojo.services.Direction;
-import com.codenjoy.dojo.services.printer.CharElements;
 import com.google.common.primitives.Chars;
 import org.apache.commons.lang3.StringUtils;
 

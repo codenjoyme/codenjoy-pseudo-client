@@ -24,12 +24,10 @@ package com.codenjoy.dojo.pseudo;
 
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
-import com.codenjoy.dojo.services.printer.CharElements;
 
 import java.io.File;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.function.Consumer;
 
 import static com.codenjoy.dojo.pseudo.RuleReader.MAIN_RULE_FILE_NAME;

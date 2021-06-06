@@ -1,6 +1,6 @@
 package com.codenjoy.dojo.pseudo;
 
-import com.codenjoy.dojo.services.printer.CharElements;
+import com.codenjoy.dojo.services.printer.CharElement;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -11,7 +11,7 @@ import java.util.function.Function;
 public class GameElementReader implements ElementReader {
 
     private String hero;
-    private CharElements[] values;
+    private CharElement[] values;
 
     public GameElementReader(String game, String hero) {
         Class<?> clazz = loadClass(game);
@@ -45,17 +45,17 @@ public class GameElementReader implements ElementReader {
     }
 
     @Override
-    public List<CharElements> values() {
+    public List<CharElement> values() {
         return Arrays.asList(values);
     }
 
     @Override
-    public Function<Character, CharElements> mapper() {
+    public Function<Character, CharElement> mapper() {
         return ch -> valueOf(ch);
     }
 
-    public CharElements valueOf(char ch) {
-        for (CharElements el : values()) {
+    public CharElement valueOf(char ch) {
+        for (CharElement el : values()) {
             if (el.ch() == ch) {
                 return el;
             }
@@ -63,8 +63,8 @@ public class GameElementReader implements ElementReader {
         throw new IllegalArgumentException("No such element with char: " + ch);
     }
 
-    public CharElements valueOf(String name) {
-        for (CharElements el : values()) {
+    public CharElement valueOf(String name) {
+        for (CharElement el : values()) {
             if (el.name().equals(name)) {
                 return el;
             }
@@ -73,7 +73,7 @@ public class GameElementReader implements ElementReader {
     }
 
     @Override
-    public CharElements hero() {
+    public CharElement hero() {
         return valueOf(hero);
     }
 }

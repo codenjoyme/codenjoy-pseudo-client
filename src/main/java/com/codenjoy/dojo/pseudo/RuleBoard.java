@@ -24,12 +24,12 @@ package com.codenjoy.dojo.pseudo;
 
 import com.codenjoy.dojo.client.AbstractBoard;
 import com.codenjoy.dojo.services.Point;
-import com.codenjoy.dojo.services.printer.CharElements;
+import com.codenjoy.dojo.services.printer.CharElement;
 
-public class RuleBoard extends AbstractBoard<CharElements> {
+public class RuleBoard extends AbstractBoard<CharElement> {
 
     public static final char ANY_CHAR = '?';
-    public static final CharElements OUT_OF_FIELD = new CharElements() {
+    public static final CharElement OUT_OF_FIELD = new CharElement() {
         @Override
         public char ch() {
             return '\uffff';
@@ -48,7 +48,7 @@ public class RuleBoard extends AbstractBoard<CharElements> {
     }
 
     @Override
-    public CharElements valueOf(char ch) {
+    public CharElement valueOf(char ch) {
         try {
             return elements.mapper().apply(ch);
         } catch (IllegalArgumentException e) {
@@ -57,7 +57,7 @@ public class RuleBoard extends AbstractBoard<CharElements> {
     }
 
     @Override
-    public CharElements getAt(int x, int y) {
+    public CharElement getAt(int x, int y) {
         if (isOutOfField(x, y)) {
             return OUT_OF_FIELD;
         }
@@ -80,7 +80,7 @@ public class RuleBoard extends AbstractBoard<CharElements> {
 
         for (int dx = 0; dx < part.size; dx++) {
             for (int dy = 0; dy < part.size; dy++) {
-                CharElements real = this.getAt(corner.getX() + dx, corner.getY() + dy);
+                CharElement real = this.getAt(corner.getX() + dx, corner.getY() + dy);
                 Character mask = part.field(dx, dy).get(0);
 
                 if (mask == ANY_CHAR){

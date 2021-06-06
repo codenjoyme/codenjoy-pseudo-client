@@ -22,15 +22,12 @@ package com.codenjoy.dojo.pseudo;
  * #L%
  */
 
-import com.codenjoy.dojo.games.bomberman.Element;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
-import com.codenjoy.dojo.services.printer.CharElements;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.nio.file.FileSystems;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
