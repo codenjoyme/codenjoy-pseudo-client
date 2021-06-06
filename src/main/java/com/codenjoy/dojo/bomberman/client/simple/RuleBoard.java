@@ -23,7 +23,6 @@ package com.codenjoy.dojo.bomberman.client.simple;
  */
 
 import com.codenjoy.dojo.client.AbstractBoard;
-import com.codenjoy.dojo.games.bomberman.Element;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.printer.CharElements;
 
@@ -32,6 +31,17 @@ import java.util.function.Function;
 public class RuleBoard extends AbstractBoard<CharElements> {
 
     public static final char ANY_CHAR = '?';
+    public static final CharElements OUT_OF_FIELD = new CharElements() {
+        @Override
+        public char ch() {
+            return '\uffff';
+        }
+
+        @Override
+        public String name() {
+            return null;
+        }
+    };
 
     private final Function<Character, CharElements> elements;
     private final CharElements hero;
@@ -53,7 +63,7 @@ public class RuleBoard extends AbstractBoard<CharElements> {
     @Override
     public CharElements getAt(int x, int y) {
         if (isOutOfField(x, y)) {
-            return Element.WALL;
+            return OUT_OF_FIELD;
         }
         return super.getAt(x, y);
     }
