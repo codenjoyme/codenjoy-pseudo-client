@@ -50,7 +50,7 @@ public class Rules {
         return rules;
     }
 
-    public List<Direction> process(Board board) {
+    public List<Direction> process(RuleBoard board) {
         return findFor(board)
                 .orElse(new RuleStop())
                 .directions(board);
@@ -64,7 +64,7 @@ public class Rules {
                 .toString();
     }
     
-    public Optional<Rule> findFor(Board board) {
+    public Optional<Rule> findFor(RuleBoard board) {
         Optional<Rule> result = rules.stream()
                 .map(rule -> rule.findFor(board))
                 .filter(Objects::nonNull)

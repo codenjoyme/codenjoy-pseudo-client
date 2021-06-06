@@ -22,10 +22,32 @@ package com.codenjoy.dojo.bomberman.client.simple;
  * #L%
  */
 
-import com.codenjoy.dojo.games.bomberman.Element;
+import com.codenjoy.dojo.client.AbstractBoard;
 import com.codenjoy.dojo.services.Point;
+import com.codenjoy.dojo.services.printer.CharElements;
 
-public class Board extends com.codenjoy.dojo.games.bomberman.Board {
+import java.util.function.Function;
+
+public class RuleBoard extends AbstractBoard<CharElements> {
+
+    public static final char ANY_CHAR = '?';
+
+    private final Function<Character, CharElements> elements;
+    private final CharElements hero;
+
+    public RuleBoard(Function<Character, CharElements> elements, CharElements hero) {
+        this.elements = elements;
+        this.hero = hero;
+    }
+
+    @Override
+    public CharElements valueOf(char ch) {
+        try {
+            return elements.apply(ch);
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
+    }
 
     @Override
     public String toString() {
@@ -33,25 +55,17 @@ public class Board extends com.codenjoy.dojo.games.bomberman.Board {
     }
     
     // TODO refactor me
-    public boolean isNearMe(Pattern pattern) {
-        Point meAtMap = getBomberman();
-        Board part = (Board)new Board(){
-            @Override
-            public Element valueOf(char ch) {
-                try {
-                    return super.valueOf(ch);
-                } catch (IllegalArgumentException e) {
-                    return null;
-                }
-            }
-        }.forString(pattern.pattern());
+    public boolean isNearHero(Pattern pattern) {
+        Point meAtMap = this.getFirst(hero);
 
-        Point meAtPart = part.getBomberman();
+        RuleBoard part = this.clone(pattern.pattern());
+        Point meAtPart = part.getFirst(hero);
+
         Point corner = meAtMap.relative(meAtPart);
 
         for (int dx = 0; dx < part.size; dx++) {
             for (int dy = 0; dy < part.size; dy++) {
-                Element real = this.getAt(corner.getX() + dx, corner.getY() + dy);
+                CharElements real = this.getAt(corner.getX() + dx, corner.getY() + dy);
                 Character mask = part.field(dx, dy).get(0);
 
                 if (mask == ANY_CHAR){
@@ -70,5 +84,13 @@ public class Board extends com.codenjoy.dojo.games.bomberman.Board {
             }
         }
         return true;
+    }
+
+    private RuleBoard clone(String pattern1) {
+        return (RuleBoard) new RuleBoard(elements, hero).forString(pattern1);
+    }
+
+    public boolean isGameOver() {
+        return get(hero).isEmpty();
     }
 }

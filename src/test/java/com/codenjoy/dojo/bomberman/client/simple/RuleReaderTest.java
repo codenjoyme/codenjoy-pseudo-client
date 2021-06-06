@@ -22,6 +22,7 @@ package com.codenjoy.dojo.bomberman.client.simple;
  * #L%
  */
 
+import com.codenjoy.dojo.games.bomberman.Element;
 import com.codenjoy.dojo.services.Direction;
 import org.junit.Test;
 
@@ -209,9 +210,9 @@ public class RuleReaderTest extends AbstractRuleReaderTest {
         // given
         shouldLoadRules_whenRuleDirective();
         
-        Board board = mock(Board.class);
+        RuleBoard board = mock(RuleBoard.class);
         Pattern pattern = new Pattern("?#??☺ ?☼?", null);
-        when(board.isNearMe(eq(pattern))).thenReturn(true);
+        when(board.isNearHero(eq(pattern))).thenReturn(true);
 
         // when
         List<Direction> directions = rules.process(board);
@@ -665,7 +666,7 @@ public class RuleReaderTest extends AbstractRuleReaderTest {
     }
 
     private void asrtBrd(String given, Direction... expected) {
-        Board board = (Board) new Board().forString(given);
+        RuleBoard board = (RuleBoard) new RuleBoard(ch -> Element.valueOf(ch), Element.BOMBERMAN).forString(given);
         assertEquals(Arrays.asList(expected).toString(), 
                 rules.process(board).toString());
     }

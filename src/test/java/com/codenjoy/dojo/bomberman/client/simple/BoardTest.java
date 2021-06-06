@@ -22,6 +22,7 @@ package com.codenjoy.dojo.bomberman.client.simple;
  * #L%
  */
 
+import com.codenjoy.dojo.games.bomberman.Element;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,11 +30,14 @@ import static org.junit.Assert.assertEquals;
 
 public class BoardTest {
 
-    private Board board;
+    private RuleBoard board;
     private Synonyms synonyms;
 
-    public static Board board(String boardString) {
-        return (Board) new Board().forString(boardString);
+    public static RuleBoard board(String boardString) {
+        return (RuleBoard) new RuleBoard(
+                ch -> Element.valueOf(ch),
+                Element.BOMBERMAN
+        ).forString(boardString);
     }
 
     @Before
@@ -89,7 +93,7 @@ public class BoardTest {
     }
 
     private void asrtMsk(String pattern, boolean expected) {
-        assertEquals(expected, board.isNearMe(new Pattern(pattern, synonyms)));
+        assertEquals(expected, board.isNearHero(new Pattern(pattern, synonyms)));
     }
 
     @Test

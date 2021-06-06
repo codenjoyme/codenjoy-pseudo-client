@@ -37,12 +37,12 @@ public class RuleNode implements Rule {
     }
 
     @Override
-    public List<Direction> directions(Board board) {
+    public List<Direction> directions(RuleBoard board) {
         return rules.process(board);
     }
 
     @Override
-    public Rule findFor(Board board) {
+    public Rule findFor(RuleBoard board) {
         return rules.findFor(board)
                 .orElse(null);
     }

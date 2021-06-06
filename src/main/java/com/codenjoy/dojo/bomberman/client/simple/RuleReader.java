@@ -242,7 +242,7 @@ public class RuleReader {
         List<Character> allow = Arrays.stream(Element.values())
                 .map(e -> e.ch())
                 .collect(toList());
-        allow.add(Board.ANY_CHAR);
+        allow.add(RuleBoard.ANY_CHAR);
         allow.addAll(pattern.synonyms().chars());
 
         return new LinkedList<>(Chars.asList(pattern.pattern().toCharArray())).stream()

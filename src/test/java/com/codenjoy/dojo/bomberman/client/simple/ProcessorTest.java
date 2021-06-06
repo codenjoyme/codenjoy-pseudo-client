@@ -31,8 +31,9 @@ import java.nio.file.FileSystems;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -41,7 +42,7 @@ public class ProcessorTest extends AbstractRuleReaderTest {
     public static final String SEP = FileSystems.getDefault().getSeparator();
 
     private Processor processor;
-    private Board board;
+    private RuleBoard board;
     private List<Message> messages;
 
     @Before
@@ -50,7 +51,7 @@ public class ProcessorTest extends AbstractRuleReaderTest {
         super.setup();
 
         messages = new LinkedList<>();
-        board = mock(Board.class);
+        board = mock(RuleBoard.class);
         
         processor = new Processor("", mock(Dice.class), this.messages::add) {
             @Override
@@ -82,7 +83,7 @@ public class ProcessorTest extends AbstractRuleReaderTest {
                 "   ",
                 "RIGHT,LEFT,DOWN,UP,UP,LEFT");
 
-        when(board.isNearMe(any(Pattern.class))).thenReturn(true);
+        when(board.isNearHero(any(Pattern.class))).thenReturn(true);
 
         // when then
         assertEquals(Direction.RIGHT, processor.next(board));
@@ -119,7 +120,7 @@ public class ProcessorTest extends AbstractRuleReaderTest {
                 "   ",
                 "BAD RULE");
 
-        when(board.isNearMe(any(Pattern.class))).thenReturn(true);
+        when(board.isNearHero(any(Pattern.class))).thenReturn(true);
 
         // when 
         Direction direction = processor.next(board);
@@ -173,7 +174,7 @@ public class ProcessorTest extends AbstractRuleReaderTest {
                 "LEFT");
 
         Pattern pattern = new Pattern("?#??☺ ?☼?", null);
-        when(board.isNearMe(eq(pattern))).thenReturn(true);
+        when(board.isNearHero(eq(pattern))).thenReturn(true);
 
         // when
         Direction direction = processor.next(board);

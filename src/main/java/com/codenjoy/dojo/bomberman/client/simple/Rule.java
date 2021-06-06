@@ -28,7 +28,7 @@ import java.util.List;
 
 public interface Rule {
 
-    List<Direction> directions(Board board);
+    List<Direction> directions(RuleBoard board);
 
-    Rule findFor(Board board);
+    Rule findFor(RuleBoard board);
 }

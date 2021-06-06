@@ -23,7 +23,6 @@ package com.codenjoy.dojo.bomberman.client.simple;
  */
 
 import com.codenjoy.dojo.services.Direction;
-import com.codenjoy.dojo.utils.TestUtils;
 
 import java.util.List;
 
@@ -38,13 +37,13 @@ public class RuleChild implements Rule {
     }
 
     @Override
-    public List<Direction> directions(Board board) {
+    public List<Direction> directions(RuleBoard board) {
         return directions;
     }
 
     @Override
-    public Rule findFor(Board board) {
-        return board.isNearMe(pattern) ? this : null;
+    public Rule findFor(RuleBoard board) {
+        return board.isNearHero(pattern) ? this : null;
     }
 
     @Override

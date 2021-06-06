@@ -28,7 +28,6 @@ import com.codenjoy.dojo.services.Direction;
 import java.io.File;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.function.Consumer;
 
 import static com.codenjoy.dojo.bomberman.client.simple.RuleReader.MAIN_RULE_FILE_NAME;
@@ -54,7 +53,7 @@ public class Processor {
         return new RuleReader();
     }
 
-    public Direction next(Board board) {
+    public Direction next(RuleBoard board) {
         if (board.isGameOver()) {
             return Direction.STOP;
         }
