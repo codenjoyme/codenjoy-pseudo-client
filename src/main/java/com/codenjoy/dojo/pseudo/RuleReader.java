@@ -248,8 +248,8 @@ public class RuleReader {
         allow.add(RuleBoard.ANY_CHAR);
         allow.addAll(pattern.synonyms().chars());
 
-        return new LinkedList<>(Arrays.asList(pattern.pattern().toCharArray())).stream()
-                .filter(ch -> !allow.contains(ch))
+        return pattern.pattern().chars()
+                .filter(ch -> !allow.contains((char)ch))
                 .count() == 0;
     }
 

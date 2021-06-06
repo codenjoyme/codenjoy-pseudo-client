@@ -52,6 +52,7 @@ public class ProcessorTest extends AbstractRuleReaderTest {
 
         messages = new LinkedList<>();
         board = mock(RuleBoard.class);
+        when(board.isGameOver()).thenReturn(false);
         
         processor = new Processor("", new TestElementReader(), mock(Dice.class), this.messages::add) {
             @Override
