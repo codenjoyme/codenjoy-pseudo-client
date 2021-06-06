@@ -9,14 +9,17 @@ echo        !                 Now we are starting pseudo client...              
 echo        +-------------------------------------------------------------------------+        
 echo [0m
 echo on
-IF "%DEBUG%"=="true" ( 
-    pause >nul
-)
 
 chcp %CODE_PAGE%
 cls
 
 call mvnw exec:java -Dfile.encoding=UTF-8 -D"exec.mainClass"="com.codenjoy.dojo.Runner" -D"exec.args"="%GAME_TO_RUN% %PSEUDO_HERO_ELEMENTS% %BOARD_URL% %PSEUDO_RULES%"
 
-echo Press any key to exit
-pause >nul
+call :ask
+
+goto :eof
+
+:ask
+    echo Press any key to continue
+    pause >nul
+goto :eof

@@ -9,11 +9,14 @@ echo        !                 Now we are building pseudo client...              
 echo        +-------------------------------------------------------------------------+        
 echo [0m
 echo on
-IF "%DEBUG%"=="true" ( 
-    pause >nul
-)
 
 call mvnw clean install -DskipTests=%SKIP_TESTS%
 
-echo Press any key to exit
-pause >nul
+call :ask
+
+goto :eof
+
+:ask
+    echo Press any key to continue
+    pause >nul
+goto :eof
