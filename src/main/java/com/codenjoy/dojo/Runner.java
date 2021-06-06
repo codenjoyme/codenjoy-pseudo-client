@@ -23,36 +23,31 @@ package com.codenjoy.dojo;
  */
 
 import com.codenjoy.dojo.client.WebSocketRunner;
-import com.codenjoy.dojo.games.bomberman.Element;
+import com.codenjoy.dojo.pseudo.GameElementReader;
 import com.codenjoy.dojo.pseudo.Messages;
-import com.codenjoy.dojo.pseudo.RuleBoard;
 import com.codenjoy.dojo.pseudo.YourSolverLite;
 import com.codenjoy.dojo.services.RandomDice;
-import com.codenjoy.dojo.services.printer.CharElements;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
 
 public class Runner {
 
     public static void main(String[] args) {
-        if (args.length != 2) {
-            System.out.println("[ERROR] " + Messages.BAD_FORMAT_PLEASE_RUN_PROGRAM_WITH_2_ARGUMENTS + ": \n" +
-                    "\t\t\t1) board url 'http://codenjoy.com:80/codenjoy-contest/board/player/playerId?code=1234567890123456789'\n" +
-                    "\t\t\t2) rules directory 'games/bomberman/rules'.\n" +
+        if (args.length != 3) {
+            System.out.println("[ERROR] " + Messages.BAD_FORMAT_PLEASE_RUN_PROGRAM_WITH_3_ARGUMENTS + ": \n" +
+                    "\t\t\t1) game name (for example 'bomberman')\n" +
+                    "\t\t\t2) board url (for example 'http://codenjoy.com:80/codenjoy-contest/board/player/playerId?code=1234567890123456789')\n" +
+                    "\t\t\t3) rules directory (for example 'games/bomberman/rules').\n" +
                     "\t\tArguments are: " + Arrays.toString(args));
             return;
         }
 
-        List<CharElements> values = Arrays.asList(Element.values());
-        Function<Character, CharElements> mapper = ch -> Element.valueOf(ch);
-        Element hero = Element.BOMB_BOMBERMAN;
+        String game = args[0];
+        String url = args[1];
+        String rules = args[2];
 
-        WebSocketRunner.runClient(args[0],
-                new YourSolverLite(args[1], values, new RandomDice()),
-                new RuleBoard(mapper, hero)
-        );
+        YourSolverLite solver = new YourSolverLite(rules, new GameElementReader(game), new RandomDice());
+        WebSocketRunner.runClient(url, solver, solver.getBoard());
     }
 
 }

@@ -34,10 +34,7 @@ public class BoardTest {
     private Synonyms synonyms;
 
     public static RuleBoard board(String boardString) {
-        return (RuleBoard) new RuleBoard(
-                ch -> Element.valueOf(ch),
-                Element.BOMBERMAN
-        ).forString(boardString);
+        return (RuleBoard) new RuleBoard(new TestElementReader()).forString(boardString);
     }
 
     @Before

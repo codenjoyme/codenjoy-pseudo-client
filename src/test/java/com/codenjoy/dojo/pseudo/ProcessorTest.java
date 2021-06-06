@@ -56,9 +56,9 @@ public class ProcessorTest extends AbstractRuleReaderTest {
         messages = new LinkedList<>();
         board = mock(RuleBoard.class);
         
-        processor = new Processor("", Arrays.asList(Element.values()), mock(Dice.class), this.messages::add) {
+        processor = new Processor("", new TestElementReader(), mock(Dice.class), this.messages::add) {
             @Override
-            protected RuleReader getReader(List<CharElements> elements) {
+            protected RuleReader getReader(ElementReader elements) {
                 return reader;
             }
         };

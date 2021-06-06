@@ -45,9 +45,9 @@ public class RuleReader {
     public static final String MAIN_RULE_FILE_NAME = "/main.rule";
     
     private List<Message> errors = new LinkedList<>();
-    private List<CharElements> elements;
+    private ElementReader elements;
 
-    public RuleReader(List<CharElements> elements) {
+    public RuleReader(ElementReader elements) {
         this.elements = elements;
     }
 
@@ -195,7 +195,7 @@ public class RuleReader {
     }
 
     private String invert(String chars) {
-        return elements.stream()
+        return elements.values().stream()
                 .map(el -> el.ch())
                 .filter(ch -> chars.indexOf(ch) == -1)
                 .collect(asString());
@@ -244,7 +244,7 @@ public class RuleReader {
     }
 
     private boolean isValidPatternSymbols(Pattern pattern) {
-        List<Character> allow = elements.stream()
+        List<Character> allow = elements.values().stream()
                 .map(e -> e.ch())
                 .collect(toList());
         allow.add(RuleBoard.ANY_CHAR);

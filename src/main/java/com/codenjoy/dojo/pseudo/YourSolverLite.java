@@ -25,17 +25,17 @@ package com.codenjoy.dojo.pseudo;
 import com.codenjoy.dojo.client.Encoding;
 import com.codenjoy.dojo.client.Solver;
 import com.codenjoy.dojo.services.Dice;
-import com.codenjoy.dojo.services.printer.CharElements;
 
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.List;
 
 public class YourSolverLite implements Solver<RuleBoard> {
 
     private Processor processor;
+    private ElementReader elements;
 
-    public YourSolverLite(String rulesPlace, List<CharElements> elements, Dice dice) {
+    public YourSolverLite(String rulesPlace, ElementReader elements, Dice dice) {
+        this.elements = elements;
         this.processor = new Processor(rulesPlace, elements, dice, this::println);
     }
 
@@ -50,5 +50,9 @@ public class YourSolverLite implements Solver<RuleBoard> {
     @Override
     public String get(RuleBoard board) {
         return processor.next(board).toString();
+    }
+
+    public RuleBoard getBoard() {
+        return new RuleBoard(elements);
     }
 }

@@ -51,7 +51,7 @@ public abstract class AbstractRuleReaderTest {
 
         cleanLns();
         
-        reader = new RuleReader(Arrays.asList(Element.values())) {
+        reader = new RuleReader(new TestElementReader()) {
             @Override
             public void load(Rules rules, File file) {
                 subFiles.add(file);

@@ -666,7 +666,7 @@ public class RuleReaderTest extends AbstractRuleReaderTest {
     }
 
     private void asrtBrd(String given, Direction... expected) {
-        RuleBoard board = (RuleBoard) new RuleBoard(ch -> Element.valueOf(ch), Element.BOMBERMAN).forString(given);
+        RuleBoard board = (RuleBoard) new RuleBoard(new TestElementReader()).forString(given);
         assertEquals(Arrays.asList(expected).toString(), 
                 rules.process(board).toString());
     }

@@ -44,7 +44,7 @@ public class RuleReaderFileTest {
     @Before
     public void setup() {
         // given
-        reader = new RuleReader(Arrays.asList(Element.values()));
+        reader = new RuleReader(new TestElementReader());
         rules = new Rules(message -> {});
     }
     

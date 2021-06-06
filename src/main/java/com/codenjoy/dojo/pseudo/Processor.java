@@ -43,7 +43,7 @@ public class Processor {
     private Deque<Direction> commands;
     private Rules rules;
 
-    public Processor(String rulesPlace, List<CharElements> elements, Dice dice, Consumer<Message> console) {
+    public Processor(String rulesPlace, ElementReader elements, Dice dice, Consumer<Message> console) {
         rulesFile = new File(rulesPlace + MAIN_RULE_FILE_NAME);
         this.dice = dice;
         commands = new LinkedList<>();
@@ -51,7 +51,7 @@ public class Processor {
         this.console = console;
     }
 
-    protected RuleReader getReader(List<CharElements> elements) {
+    protected RuleReader getReader(ElementReader elements) {
         return new RuleReader(elements);
     }
 

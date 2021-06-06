@@ -26,8 +26,6 @@ import com.codenjoy.dojo.client.AbstractBoard;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.printer.CharElements;
 
-import java.util.function.Function;
-
 public class RuleBoard extends AbstractBoard<CharElements> {
 
     public static final char ANY_CHAR = '?';
@@ -43,18 +41,16 @@ public class RuleBoard extends AbstractBoard<CharElements> {
         }
     };
 
-    private final Function<Character, CharElements> elements;
-    private final CharElements hero;
+    private ElementReader elements;
 
-    public RuleBoard(Function<Character, CharElements> elements, CharElements hero) {
+    public RuleBoard(ElementReader elements) {
         this.elements = elements;
-        this.hero = hero;
     }
 
     @Override
     public CharElements valueOf(char ch) {
         try {
-            return elements.apply(ch);
+            return elements.mapper().apply(ch);
         } catch (IllegalArgumentException e) {
             return null;
         }
@@ -75,10 +71,10 @@ public class RuleBoard extends AbstractBoard<CharElements> {
     
     // TODO refactor me
     public boolean isNearHero(Pattern pattern) {
-        Point meAtMap = this.getFirst(hero);
+        Point meAtMap = this.getFirst(elements.hero());
 
         RuleBoard part = this.clone(pattern.pattern());
-        Point meAtPart = part.getFirst(hero);
+        Point meAtPart = part.getFirst(elements.hero());
 
         Point corner = meAtMap.relative(meAtPart);
 
@@ -106,10 +102,10 @@ public class RuleBoard extends AbstractBoard<CharElements> {
     }
 
     private RuleBoard clone(String pattern1) {
-        return (RuleBoard) new RuleBoard(elements, hero).forString(pattern1);
+        return (RuleBoard) new RuleBoard(elements).forString(pattern1);
     }
 
     public boolean isGameOver() {
-        return get(hero).isEmpty();
+        return get(elements.hero()).isEmpty();
     }
 }
