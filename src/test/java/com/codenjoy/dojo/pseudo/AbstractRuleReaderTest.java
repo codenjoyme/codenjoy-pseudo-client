@@ -22,7 +22,6 @@ package com.codenjoy.dojo.pseudo;
  * #L%
  */
 
-import com.codenjoy.dojo.games.bomberman.Element;
 import org.junit.Before;
 
 import java.io.File;

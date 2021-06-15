@@ -22,14 +22,12 @@ package com.codenjoy.dojo.pseudo;
  * #L%
  */
 
-import com.codenjoy.dojo.games.bomberman.Element;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
 import java.nio.file.FileSystems;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;

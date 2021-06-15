@@ -27,9 +27,9 @@ import java.util.Arrays;
 public class TestElementReader extends GameElementReader{
 
     public TestElementReader() {
-        super("bomberman",
-                Arrays.asList("BOMBERMAN",
-                        "BOMB_BOMBERMAN",
-                        "DEAD_BOMBERMAN"));
+        super("mollymage",
+                Arrays.asList("HERO",
+                        "POTION_HERO",
+                        "DEAD_HERO"));
     }
 }
