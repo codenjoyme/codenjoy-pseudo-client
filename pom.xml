@@ -22,6 +22,7 @@
         <!-- Maven -->
         <maven-compiler.version>3.8.1</maven-compiler.version>
         <maven-license.version>2.0.0</maven-license.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
     </properties>
 
     <repositories>
@@ -42,6 +43,34 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>jar-with-dependencies</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>${maven-assembly-plugin.version}</version>
+                        <configuration>
+                            <finalName>${project.artifactId}-exec</finalName>
+                            <archive>
+                                <manifest>
+                                    <addClasspath>false</addClasspath>
+                                    <mainClass>com.codenjoy.dojo.Runner</mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
