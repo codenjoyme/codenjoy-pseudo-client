@@ -44,7 +44,7 @@ public class BoardTest {
                 "☼#2  &  ☼" +
                 "☼# 3 ♣ ♠☼" +
                 "☼☺  4   ☼" +
-                "☼   ♥ H☻☼" +
+                "☼   ♡ H☻☼" +
                 "☼x H ҉҉҉☼" +
                 "☼& &    ☼" +
                 "☼☼☼☼☼☼☼☼☼");
@@ -252,7 +252,7 @@ public class BoardTest {
     public void shouldIsNearMe_case6() {
         // same
         asrtMsk("?☼☺  4 " +
-                "?☼   ♥ " +
+                "?☼   ♡ " +
                 "?☼x H ҉" +
                 "?☼& &  " +
                 "?☼☼☼☼☼☼" +
@@ -277,7 +277,7 @@ public class BoardTest {
 
         // not same
         asrtMsk("?☼☺  4 " +
-                "?☼   ♥ " +
+                "?☼   ♡ " +
                 "?☼x H ҉" +
                 "?☼& &  " +
                 "?☼☼☼☼☼☼" +
@@ -285,7 +285,7 @@ public class BoardTest {
                 "☻??????", false);
 
         asrtMsk("?☼☺  4 " +
-                "?☼ ☻ ♥ " +
+                "?☼ ☻ ♡ " +
                 "?☼x H ҉" +
                 "?☼& &  " +
                 "?☼☼☼☼☼☼" +
