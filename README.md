@@ -235,6 +235,11 @@ Follow the instructions below to understand how to use it.
     POTION_IMMUNE('i'),         // Do not die after potion blast
                                 // (own potion and others as well). Temporary.
 
+    POISON_THROWER('T'),        // Hero can shoot by poison cloud
+                                // Using: Direction,ACT(1). Example: RIGHT,ACT(1)
+                                // Temporary.
+                                    
+
     /// a void
     NONE(' '),              // This is the only place where you can move your Molly.
 
