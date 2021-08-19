@@ -239,6 +239,10 @@ Follow the instructions below to understand how to use it.
                                 // Using: Direction,ACT(1). Example: RIGHT,ACT(1)
                                 // Temporary.
                                     
+    POTION_EXPLODER('A'),       // Hero can explode all potions on the field
+                                // Using: ACT(2).
+                                // Temporary.
+                                    
 
     /// a void
     NONE(' '),              // This is the only place where you can move your Molly.
