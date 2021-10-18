@@ -34,6 +34,11 @@ import java.util.List;
 public class Runner {
 
     public static void main(String[] args) {
+        System.out.printf(
+                "+-----------------+\n" +
+                "| Starting runner |\n" +
+                "+-----------------+\n");
+
         if (args.length != 4) {
             System.out.println("[ERROR] " + Messages.NOT_ENOUGH_ARGUMENTS + ": \n" +
                     "\t\t\t1) game name (for example 'mollymage')\n" +
@@ -48,6 +53,14 @@ public class Runner {
         List<String> heroes = Arrays.asList(args[1].split(","));
         String url = args[2];
         String rules = args[3];
+
+        System.out.printf(
+                "Got from Environment:\n" +
+                "\t 'GAME':   '%s'\n" +
+                "\t 'HEROES': '%s'\n" +
+                "\t 'URL':    '%s'\n" +
+                "\t 'RULES':  '%s'\n",
+                game, heroes, url, rules);
 
         YourSolverLite solver = new YourSolverLite(rules, new GameElementReader(game, heroes), new RandomDice());
         WebSocketRunner.runClient(url, solver, solver.getBoard());
