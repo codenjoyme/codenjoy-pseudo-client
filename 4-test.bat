@@ -6,9 +6,6 @@ echo        [44;93m!                  Now we are starting pseudo tests...      
 echo        [44;93m+-------------------------------------------------------------------------+[0m
 echo on
 
-chcp %CODE_PAGE%
-cls
-
 call %MVNW% clean test
 
 call :ask

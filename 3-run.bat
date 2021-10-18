@@ -6,9 +6,6 @@ echo        [44;93m!                 Now we are starting pseudo client...      
 echo        [44;93m+-------------------------------------------------------------------------+[0m
 echo on
 
-chcp %CODE_PAGE%
-cls
-
 call mvnw exec:java -Dfile.encoding=UTF-8 -D"exec.mainClass"="com.codenjoy.dojo.Runner" -D"exec.args"="%GAME_TO_RUN% %PSEUDO_HERO_ELEMENTS% %BOARD_URL% %PSEUDO_RULES%"
 
 call :ask
