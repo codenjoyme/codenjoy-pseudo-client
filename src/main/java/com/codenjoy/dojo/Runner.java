@@ -24,6 +24,7 @@ package com.codenjoy.dojo;
 
 import com.codenjoy.dojo.client.WebSocketRunner;
 import com.codenjoy.dojo.pseudo.GameElementReader;
+import com.codenjoy.dojo.pseudo.HeroElements;
 import com.codenjoy.dojo.pseudo.Messages;
 import com.codenjoy.dojo.pseudo.YourSolverLite;
 import com.codenjoy.dojo.services.RandomDice;
@@ -39,30 +40,29 @@ public class Runner {
                 "| Starting runner |\n" +
                 "+-----------------+\n");
 
-        if (args.length != 4) {
+        if (args.length != 3) {
             System.out.println("[ERROR] " + Messages.NOT_ENOUGH_ARGUMENTS + ": \n" +
                     "\t\t\t1) game name (for example 'mollymage')\n" +
-                    "\t\t\t2) hero sprite names (for example 'HERO,POTION_HERO,DEAD_HERO')\n" +
-                    "\t\t\t3) board url (for example 'http://codenjoy.com:80/codenjoy-contest/board/player/playerId?code=1234567890123456789')\n" +
-                    "\t\t\t4) rules directory (for example './rules/').\n" +
+                    "\t\t\t2) board url (for example 'http://codenjoy.com:80/codenjoy-contest/board/player/playerId?code=1234567890123456789')\n" +
+                    "\t\t\t3) rules directory (for example './rules/').\n" +
                     "\t\tArguments are: " + Arrays.toString(args));
             return;
         }
 
         String game = args[0];
-        List<String> heroes = Arrays.asList(args[1].split(","));
-        String url = args[2];
-        String rules = args[3];
+        String url = args[1];
+        String rules = args[2];
 
         System.out.printf(
                 "Got from Environment:\n" +
                 "\t 'GAME':   '%s'\n" +
-                "\t 'HEROES': '%s'\n" +
                 "\t 'URL':    '%s'\n" +
                 "\t 'RULES':  '%s'\n",
-                game, heroes, url, rules);
+                game, url, rules);
 
-        YourSolverLite solver = new YourSolverLite(rules, new GameElementReader(game, heroes), new RandomDice());
+        YourSolverLite solver = new YourSolverLite(rules,
+                new GameElementReader(game, HeroElements.get(game)),
+                new RandomDice());
         WebSocketRunner.runClient(url, solver, solver.getBoard());
     }
 }

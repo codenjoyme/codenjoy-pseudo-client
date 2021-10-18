@@ -22,14 +22,17 @@ package com.codenjoy.dojo.pseudo;
  * #L%
  */
 
+import com.codenjoy.dojo.games.mollymage.Element;
+
 import java.util.Arrays;
 
-public class TestElementReader extends GameElementReader{
+public class TestElementReader extends GameElementReader {
 
     public TestElementReader() {
         super("mollymage",
-                Arrays.asList("HERO",
-                        "POTION_HERO",
-                        "DEAD_HERO"));
+                Arrays.asList(
+                        Element.HERO,
+                        Element.POTION_HERO,
+                        Element.DEAD_HERO));
     }
 }

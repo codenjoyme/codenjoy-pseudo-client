@@ -37,10 +37,20 @@ public class GameElementReader implements ElementReader {
     private List<String> heroElements;
     private CharElement[] values;
 
-    public GameElementReader(String game, List<String> heroElements) {
+    public GameElementReader(String game, List<CharElement> heroElements) {
         Class<?> clazz = loadClass(game);
         this.values = getEnumValues(clazz);
-        this.heroElements = heroElements;
+
+        this.heroElements = heroElements.stream()
+                .map(element -> String.valueOf(element.name()))
+                .collect(toList());
+
+        System.out.printf("Hero elements: %s\n",
+                heroElements.stream()
+                        .map(element -> String.format("%s('%s')",
+                                        element.name(),
+                                        element.ch()))
+                        .collect(toList()));
     }
 
     private static <E extends Enum> E[] getEnumValues(Class<?> enumClass) {
