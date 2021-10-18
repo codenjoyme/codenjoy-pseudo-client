@@ -6,7 +6,7 @@ echo        [44;93m!                 Now we are building pseudo client...      
 echo        [44;93m+-------------------------------------------------------------------------+[0m
 echo on
 
-call mvnw clean install -DskipTests=%SKIP_TESTS%
+call %MVNW% clean install -DskipTests=%SKIP_TESTS%
 
 call :ask
 
