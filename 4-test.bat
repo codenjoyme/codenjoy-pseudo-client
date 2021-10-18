@@ -3,11 +3,9 @@ if "%JAVASCRIPT_CLIENT_HOME%"=="" (
 )
 
 echo off
-echo [44;93m
-echo        +-------------------------------------------------------------------------+
-echo        !                  Now we are starting java tests...                      !
-echo        +-------------------------------------------------------------------------+
-echo [0m
+echo        [44;93m+-------------------------------------------------------------------------+[0m
+echo        [44;93m!                  Now we are starting pseudo tests...                    ![0m
+echo        [44;93m+-------------------------------------------------------------------------+[0m
 echo on
 
 chcp %CODE_PAGE%
@@ -20,6 +18,10 @@ call :ask
 goto :eof
 
 :ask
-    echo Press any key to continue
+    echo off
+    echo        [44;93m+---------------------------------+[0m
+    echo        [44;93m!    Press any key to continue    ![0m
+    echo        [44;93m+---------------------------------+[0m
+    echo on
     pause >nul
 goto :eof

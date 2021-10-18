@@ -20,6 +20,10 @@ call :ask
 goto :eof
 
 :ask
-    echo Press any key to continue
+    echo off
+    echo        [44;93m+---------------------------------+[0m
+    echo        [44;93m!    Press any key to continue    ![0m
+    echo        [44;93m+---------------------------------+[0m
+    echo on
     pause >nul
 goto :eof

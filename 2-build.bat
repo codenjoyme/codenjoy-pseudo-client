@@ -3,11 +3,9 @@ if "%PSEUDO_CLIENT_HOME%"=="" (
 )
 
 echo off
-echo [44;93m
-echo        +-------------------------------------------------------------------------+        
-echo        !                 Now we are building pseudo client...                    !
-echo        +-------------------------------------------------------------------------+        
-echo [0m
+echo        [44;93m+-------------------------------------------------------------------------+[0m
+echo        [44;93m!                 Now we are building pseudo client...                    ![0m
+echo        [44;93m+-------------------------------------------------------------------------+[0m
 echo on
 
 call mvnw clean install -DskipTests=%SKIP_TESTS%
@@ -17,6 +15,11 @@ call :ask
 goto :eof
 
 :ask
-    echo Press any key to continue
+    echo off
+    echo        [44;93m+---------------------------------+[0m
+    echo        [44;93m!    Press any key to continue    ![0m
+    echo        [44;93m+---------------------------------+[0m
+    echo on
     pause >nul
 goto :eof
+
