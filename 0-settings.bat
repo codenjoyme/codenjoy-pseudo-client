@@ -1,10 +1,10 @@
-set GAME_TO_RUN=mollymage
-set PSEUDO_HERO_ELEMENTS=HERO,POTION_HERO,DEAD_HERO
-set BOARD_URL=http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000
+if "%GAME_TO_RUN%"==""          ( set GAME_TO_RUN=mollymage)
+if "%BOARD_URL%"==""            ( set BOARD_URL=http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000)
+if "%PSEUDO_HERO_ELEMENTS%"=="" ( set PSEUDO_HERO_ELEMENTS=HERO,POTION_HERO,DEAD_HERO)
 
 set ROOT=%CD%
 
-set SKIP_TESTS=true
+if "%SKIP_TESTS%"=="" ( set SKIP_TESTS=true)
 
 set CODE_PAGE=65001
 chcp %CODE_PAGE%
