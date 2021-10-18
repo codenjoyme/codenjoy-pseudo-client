@@ -46,8 +46,6 @@ public class GameElementReader implements ElementReader {
     private static <E extends Enum> E[] getEnumValues(Class<?> enumClass) {
         try {
             Field field = enumClass.getDeclaredField("$VALUES");
-            System.out.println(field);
-            System.out.println(Modifier.toString(field.getModifiers()));
             field.setAccessible(true);
             Object o = field.get(null);
             return (E[]) o;
