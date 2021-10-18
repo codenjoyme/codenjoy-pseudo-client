@@ -1,6 +1,4 @@
-if "%JAVA_CLIENT_HOME%"=="" (
-    call 0-settings.bat
-)
+call 0-settings.bat
 
 echo off
 echo        [44;93m+-------------------------------------+[0m
