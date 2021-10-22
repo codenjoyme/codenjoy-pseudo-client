@@ -1,5 +1,5 @@
 echo off
-call lib.bat :color Setup variables...
+call lib :color Setup variables...
 echo on
 
 if "%GAME_TO_RUN%"==""          ( set GAME_TO_RUN=mollymage)
@@ -28,9 +28,9 @@ if "%NO_MAVEN%"=="true" ( set MAVEN_OPTS=-Dmaven.repo.local=%MAVEN_HOME%\reposit
 set MVNW=%ROOT%\mvnw
 
 echo off
-call lib.bat :color JAVA_HOME=%JAVA_HOME%
-call lib.bat :color MAVEN_HOME=%MAVEN_HOME%
-call lib.bat :color MAVEN_OPTS=%MAVEN_OPTS%
+call lib :color JAVA_HOME=%JAVA_HOME%
+call lib :color MAVEN_HOME=%MAVEN_HOME%
+call lib :color MAVEN_OPTS=%MAVEN_OPTS%
 echo on
 
 set ARCH_URL=https://aka.ms/download-jdk/microsoft-jdk-11.0.11.9.1-windows-x64.zip
