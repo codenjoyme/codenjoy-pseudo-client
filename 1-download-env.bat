@@ -8,7 +8,7 @@ if "%SKIP_JDK_INSTALL%"=="true" ( goto :skip )
 if "%INSTALL_LOCALLY%"=="false" ( goto :skip )
 if "%INSTALL_LOCALLY%"=="" ( goto :skip )
 
-call lib.bat :install jdk
+call lib.bat :install jdk %ARCH_URL% %ARCH_FOLDER%
 call lib.bat :print_color %MVNW% -v
 
 call lib.bat :ask
