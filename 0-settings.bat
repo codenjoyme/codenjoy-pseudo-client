@@ -1,3 +1,7 @@
+echo off
+call lib.bat :color Setup variables...
+echo on
+
 if "%GAME_TO_RUN%"==""          ( set GAME_TO_RUN=mollymage)
 if "%BOARD_URL%"==""            ( set BOARD_URL=http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000)
 
@@ -24,13 +28,13 @@ if "%NO_MAVEN%"=="true" ( set MAVEN_OPTS=-Dmaven.repo.local=%MAVEN_HOME%\reposit
 set MVNW=%ROOT%\mvnw
 
 echo off
-echo        [44;93mJAVA_HOME=%JAVA_HOME%[0m
-echo        [44;93mMAVEN_HOME=%MAVEN_HOME%[0m
-echo        [44;93mMAVEN_OPTS=%MAVEN_OPTS%[0m
+call lib.bat :color JAVA_HOME=%JAVA_HOME%
+call lib.bat :color MAVEN_HOME=%MAVEN_HOME%
+call lib.bat :color MAVEN_OPTS=%MAVEN_OPTS%
 echo on
 
-set ARCH_JDK=https://aka.ms/download-jdk/microsoft-jdk-11.0.11.9.1-windows-x64.zip
-set ARCH_JDK_FOLDER=jdk-11.0.11+9
+set ARCH_URL=https://aka.ms/download-jdk/microsoft-jdk-11.0.11.9.1-windows-x64.zip
+set ARCH_FOLDER=jdk-11.0.11+9
 
 set PSEUDO_CLIENT_HOME=%ROOT%
 set PSEUDO_RULES=%PSEUDO_CLIENT_HOME%\rules
