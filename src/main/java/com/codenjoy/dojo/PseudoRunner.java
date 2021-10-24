@@ -32,7 +32,7 @@ import com.codenjoy.dojo.services.RandomDice;
 import java.util.Arrays;
 import java.util.List;
 
-public class Runner {
+public class PseudoRunner {
 
     public static void main(String[] args) {
         System.out.printf(

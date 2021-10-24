@@ -26,6 +26,7 @@ if "%MAVEN_HOME%"=="" ( set NO_MAVEN=true)
 if "%NO_MAVEN%"=="true" ( set MAVEN_HOME=%ROOT%\.mvn)
 if "%NO_MAVEN%"=="true" ( set MAVEN_OPTS=-Dmaven.repo.local=%MAVEN_HOME%\repository)
 set MVNW=%ROOT%\mvnw
+set JAVA=%JAVA_HOME%\bin\java
 
 echo off
 call lib :color JAVA_HOME=%JAVA_HOME%
