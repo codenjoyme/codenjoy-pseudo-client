@@ -98,17 +98,20 @@ public class HeroElements {
         put("clifford",
                 getAll(com.codenjoy.dojo.games.clifford.Element::valueOf,
                         "HERO_DIE",
-                        "HERO_CRACK_LEFT",
-                        "HERO_CRACK_RIGHT",
                         "HERO_LADDER",
                         "HERO_LEFT",
                         "HERO_RIGHT",
-                        "HERO_FALL_LEFT",
-                        "HERO_FALL_RIGHT",
-                        "HERO_PIPE_LEFT",
-                        "HERO_PIPE_RIGHT",
-                        "HERO_PIT_LEFT",
-                        "HERO_PIT_RIGHT"));
+                        "HERO_FALL",
+                        "HERO_PIPE",
+                        "HERO_PIT",
+
+                        "HERO_MASK_DIE",
+                        "HERO_MASK_LADDER",
+                        "HERO_MASK_LEFT",
+                        "HERO_MASK_RIGHT",
+                        "HERO_MASK_FALL",
+                        "HERO_MASK_PIPE",
+                        "HERO_MASK_PIT"));
 
         put("battlecity",
                 getAll(com.codenjoy.dojo.games.battlecity.Element::valueOf,
