@@ -43,7 +43,7 @@ public class PseudoRunner {
         if (args.length != 3) {
             System.out.println("[ERROR] " + Messages.NOT_ENOUGH_ARGUMENTS + ": \n" +
                     "\t\t\t1) game name (for example 'mollymage')\n" +
-                    "\t\t\t2) board url (for example 'http://codenjoy.com:80/codenjoy-contest/board/player/playerId?code=1234567890123456789')\n" +
+                    "\t\t\t2) board url (for example 'http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000')\n" +
                     "\t\t\t3) rules directory (for example './rules/').\n" +
                     "\t\tArguments are: " + Arrays.toString(args));
             return;
