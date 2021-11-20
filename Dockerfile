@@ -24,7 +24,7 @@ WORKDIR /app
 ARG PSEUDO_RULES
 ENV PSEUDO_RULES_VAR=$PSEUDO_RULES
 
-COPY --from=build /app/target/client-pseudo-exec.jar ./app.jar
+COPY --from=build /app/target/client-exec.jar ./app.jar
 COPY $PSEUDO_RULES_VAR rules/
 
 ENTRYPOINT java -jar ./app.jar "$GAME_TO_RUN_VAR" "$SERVER_URL_VAR" "./rules"
