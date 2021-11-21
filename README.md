@@ -50,7 +50,7 @@ Follow the instructions below to understand how to use it.
 4. Set `board url` at second line 
 
     ```
-    set BOARD_URL=https://codenjoy.com/codenjoy-contest/board/player/playerId?code=12345678901234567890
+    set SERVER_URL=https://codenjoy.com/codenjoy-contest/board/player/playerId?code=12345678901234567890
     ```
 
 5. Save `0-settings.bat` file and close

@@ -202,9 +202,9 @@ set OPTION=%1
     call :color "%CL_HEADER%" "Running client..."
 
     rem run jar
-    rem call :eval_echo "%JAVA% -Dfile.encoding=UTF-8 -jar %ROOT%\client-exec.jar `%GAME_TO_RUN%` `%BOARD_URL%`"
+    rem call :eval_echo "%JAVA% -Dfile.encoding=UTF-8 -jar %ROOT%\client-exec.jar `%GAME_TO_RUN%` `%SERVER_URL%`"
 
     rem build & run (without jar)
-    call :eval_echo "%MVNW% clean compile exec:java -Dfile.encoding=UTF-8 -Dexec.mainClass=com.codenjoy.dojo.PseudoRunner -Dexec.args=`%GAME_TO_RUN% %BOARD_URL% %PSEUDO_RULES%`"
+    call :eval_echo "%MVNW% clean compile exec:java -Dfile.encoding=UTF-8 -Dexec.mainClass=com.codenjoy.dojo.PseudoRunner -Dexec.args=`%GAME_TO_RUN% %SERVER_URL% %PSEUDO_RULES%`"
 
     goto :eof
