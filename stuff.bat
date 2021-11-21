@@ -22,7 +22,6 @@ call run :init_colors
     goto :eof          
 
 :settings
-
     if "%INSTALL_LOCALLY%"=="true" ( set JAVA_HOME=)
     if "%INSTALL_LOCALLY%"=="true" ( set MAVEN_HOME=)
 
@@ -56,7 +55,7 @@ call run :init_colors
     goto :eof
 
 :version
-    call run :print_color %MVNW% -v
+    call run :eval_echo_color ‘%MVNW% -v‘
     goto :eof
 
 :build
