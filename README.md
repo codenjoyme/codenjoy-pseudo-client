@@ -199,7 +199,7 @@ Follow the instructions below to understand how to use it.
     POTION_TIMER_3('3'),    // This after 3...
     POTION_TIMER_2('2'),    // Two..
     POTION_TIMER_1('1'),    // One.
-    BOOM('҉'),              // Boom! this is what is potion does,
+    BLAST('҉'),             // Boom! this is what is potion does,
                             // everything that is destroyable got destroyed.
 
     /// walls
