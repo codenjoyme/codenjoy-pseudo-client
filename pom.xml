@@ -175,31 +175,6 @@
         </resources>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler.version}</version>
-                <executions>
-                    <execution>
-                        <!-- Плагин отвечает за компиляцию
-                             классов -->
-                        <id>[##2]-compile-java</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <phase>compile</phase>
-                    </execution>
-                    <execution>
-                        <id>default-compile</id>
-                        <phase>none</phase>
-                    </execution>
-                </executions>
-                <configuration>
-                    <encoding>utf8</encoding>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <version>${maven-license.version}</version>
@@ -223,6 +198,31 @@
                     <canUpdateCopyright>false</canUpdateCopyright>
                     <canUpdateDescription>false</canUpdateDescription>
                     <canUpdateLicense>false</canUpdateLicense>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler.version}</version>
+                <executions>
+                    <execution>
+                        <!-- Плагин отвечает за компиляцию
+                             классов -->
+                        <id>[##2]-compile-java</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <phase>compile</phase>
+                    </execution>
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <encoding>utf8</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
