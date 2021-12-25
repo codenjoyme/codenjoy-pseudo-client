@@ -49,10 +49,10 @@ public class HeroElements {
                         "ROBO_FLYING",
                         "ROBO_LASER"));
 
-        put("minesweeper",
-                getAll(com.codenjoy.dojo.games.minesweeper.Element::valueOf,
-                        "DETECTOR",
-                        "BANG"));
+        put("verland",
+                getAll(com.codenjoy.dojo.games.verland.Element::valueOf,
+                        "HERO",
+                        "HERO_DEAD"));
 
         put("sample",
                 getAll(com.codenjoy.dojo.games.sample.Element::valueOf,
