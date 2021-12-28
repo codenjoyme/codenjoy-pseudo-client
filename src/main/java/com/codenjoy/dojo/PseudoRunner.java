@@ -27,10 +27,9 @@ import com.codenjoy.dojo.pseudo.GameElementReader;
 import com.codenjoy.dojo.pseudo.HeroElements;
 import com.codenjoy.dojo.pseudo.Messages;
 import com.codenjoy.dojo.pseudo.YourSolverLite;
-import com.codenjoy.dojo.services.RandomDice;
+import com.codenjoy.dojo.services.dice.RandomDice;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class PseudoRunner {
 
