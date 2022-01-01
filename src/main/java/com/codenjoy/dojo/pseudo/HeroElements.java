@@ -29,10 +29,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-import static com.codenjoy.dojo.games.icancode.Element.Layers.LAYER2;
-import static com.codenjoy.dojo.games.icancode.Element.Layers.LAYER3;
 import static java.util.stream.Collectors.toList;
 
 public class HeroElements {
@@ -113,22 +110,22 @@ public class HeroElements {
                         "HERO_MASK_PIPE",
                         "HERO_MASK_PIT"));
 
-        put("battlecity",
-                getAll(com.codenjoy.dojo.games.battlecity.Element::valueOf,
+        put("rawelbbub",
+                getAll(com.codenjoy.dojo.games.rawelbbub.Element::valueOf,
                         "TANK_UP",
                         "TANK_RIGHT",
                         "TANK_DOWN",
                         "TANK_LEFT"));
 
-        put("snake",
-                getAll(com.codenjoy.dojo.games.snake.Element::valueOf,
+        put("knibert",
+                getAll(com.codenjoy.dojo.games.knibert.Element::valueOf,
                         "HEAD_DOWN",
                         "HEAD_LEFT",
                         "HEAD_RIGHT",
                         "HEAD_UP"));
 
-        put("snakebattle",
-                getAll(com.codenjoy.dojo.games.snakebattle.Element::valueOf,
+        put("namdreab",
+                getAll(com.codenjoy.dojo.games.namdreab.Element::valueOf,
                         "HEAD_DOWN",
                         "HEAD_LEFT",
                         "HEAD_RIGHT",
