@@ -41,6 +41,7 @@ public class HeroElements {
         // TODO потестить как работает pseudo c несколькими леерами icancode
         put("icancode",
                 getAll(com.codenjoy.dojo.games.icancode.Element::valueOf,
+                        // TODO вот тут сильно не удобно, что захардкоджены строчки
                         "ROBO",
                         "ROBO_FALLING",
                         "ROBO_FLYING",
@@ -89,8 +90,8 @@ public class HeroElements {
         put("mollymage",
                 getAll(com.codenjoy.dojo.games.mollymage.Element::valueOf,
                         "HERO",
-                        "POTION_HERO",
-                        "DEAD_HERO"));
+                        "HERO_POTION",
+                        "HERO_DEAD"));
 
         put("clifford",
                 getAll(com.codenjoy.dojo.games.clifford.Element::valueOf,

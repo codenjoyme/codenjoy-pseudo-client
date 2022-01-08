@@ -205,7 +205,7 @@ Follow the instructions below to understand how to use it.
     /// walls
     WALL('☼'),              // Indestructible wall - it will not fall from potion.
     TREASURE_BOX('#'),      // this is a treasure box, it opens with an explosion.
-    OPENING_TREASURE_BOX('H'), // this is like a treasure box opens looks
+    TREASURE_BOX_OPENING('H'), // this is like a treasure box opens looks
                             // like, it will disappear on next move.
                             // if it's you did it - you'll get score
                             // points. Perhaps a prize will appear.
@@ -217,7 +217,7 @@ Follow the instructions below to understand how to use it.
                             // You'd better kill this piece of ... soul,
                             // you'll get score points for it.
 
-    DEAD_GHOST('x'),        // This is ghost corpse.
+    GHOST_DEAD('x'),        // This is ghost corpse.
 
     /// perks
     POTION_BLAST_RADIUS_INCREASE('+'), // Potion blast radius increase.
@@ -249,15 +249,15 @@ Follow the instructions below to understand how to use it.
 
     /// your Molly
     HERO('☺'),              // This is what she usually looks like.
-    POTION_HERO('☻'),       // This is if she is sitting on own potion.
+    HERO_POTION('☻'),       // This is if she is sitting on own potion.
     DEAD_HERO('Ѡ'),         // Oops, your Molly is dead (don't worry,
                             // she will appear somewhere in next move).
                             // You're getting penalty points for each death.
 
     /// other players heroes
     OTHER_HERO('♥'),        // This is what other heroes looks like.
-    OTHER_POTION_HERO('♠'), // This is if player is sitting on own potion.
-    OTHER_DEAD_HERO('♣');   // Enemy corpse (it will disappear shortly,
+    OTHER_HERO_POTION('♠'), // This is if player is sitting on own potion.
+    OTHER_HERO_DEAD('♣');   // Enemy corpse (it will disappear shortly,
                             // right on the next move).
                             // If you've done it you'll get score points.
     ```

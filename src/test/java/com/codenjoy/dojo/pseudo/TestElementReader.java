@@ -32,7 +32,7 @@ public class TestElementReader extends GameElementReader {
         super("mollymage",
                 Arrays.asList(
                         Element.HERO,
-                        Element.POTION_HERO,
-                        Element.DEAD_HERO));
+                        Element.HERO_POTION,
+                        Element.HERO_DEAD));
     }
 }
