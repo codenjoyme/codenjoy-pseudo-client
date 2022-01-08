@@ -55,7 +55,7 @@ public class HeroElements {
         put("sample",
                 getAll(com.codenjoy.dojo.games.sample.Element::valueOf,
                         "HERO",
-                        "DEAD_HERO"));
+                        "HERO_DEAD"));
 
         put("puzzlebox",
                 getAll(com.codenjoy.dojo.games.puzzlebox.Element::valueOf,

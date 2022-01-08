@@ -250,7 +250,7 @@ Follow the instructions below to understand how to use it.
     /// your Molly
     HERO('☺'),              // This is what she usually looks like.
     HERO_POTION('☻'),       // This is if she is sitting on own potion.
-    DEAD_HERO('Ѡ'),         // Oops, your Molly is dead (don't worry,
+    HERO_DEAD('Ѡ'),         // Oops, your Molly is dead (don't worry,
                             // she will appear somewhere in next move).
                             // You're getting penalty points for each death.
 
