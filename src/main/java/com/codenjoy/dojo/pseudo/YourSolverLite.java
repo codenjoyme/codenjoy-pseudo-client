@@ -23,11 +23,10 @@ package com.codenjoy.dojo.pseudo;
  */
 
 import com.codenjoy.dojo.client.Solver;
-import com.codenjoy.dojo.client.WebSocketRunner;
 import com.codenjoy.dojo.services.Dice;
 
-import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 public class YourSolverLite implements Solver<RuleBoard> {
 
@@ -40,11 +39,7 @@ public class YourSolverLite implements Solver<RuleBoard> {
     }
 
     private void println(Message message) {
-        try {
-            new PrintStream(System.out, true, WebSocketRunner.UTF8).println(message.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new PrintStream(System.out, true, StandardCharsets.UTF_8).println(message.toString());
     }
 
     @Override

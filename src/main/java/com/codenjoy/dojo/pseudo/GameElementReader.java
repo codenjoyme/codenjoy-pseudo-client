@@ -22,28 +22,24 @@ package com.codenjoy.dojo.pseudo;
  * #L%
  */
 
+import com.codenjoy.dojo.client.ElementsMap;
 import com.codenjoy.dojo.services.printer.CharElement;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 
 import static java.util.stream.Collectors.toList;
 
 public class GameElementReader implements ElementReader {
 
-    private List<String> heroElements;
+    private List<CharElement> heroElements;
     private CharElement[] values;
 
     public GameElementReader(String game, List<CharElement> heroElements) {
         Class<?> clazz = loadClass(game);
-        this.values = getEnumValues(clazz);
-
-        this.heroElements = heroElements.stream()
-                .map(element -> String.valueOf(element.name()))
-                .collect(toList());
+        values = getEnumValues(clazz);
+        this.heroElements = heroElements;
 
         System.out.printf("Hero elements: %s\n",
                 heroElements.stream()
@@ -78,37 +74,12 @@ public class GameElementReader implements ElementReader {
 
     @Override
     public CharElement[] values() {
-        return Arrays.copyOf(values, values.length);
-    }
-
-    @Override
-    public Function<Character, CharElement> mapper() {
-        return ch -> valueOf(ch);
-    }
-
-    public CharElement valueOf(char ch) {
-        for (CharElement el : values()) {
-            if (el.ch() == ch) {
-                return el;
-            }
-        }
-        throw new IllegalArgumentException("No such element with char: " + ch);
-    }
-
-    public CharElement valueOf(String name) {
-        for (CharElement el : values()) {
-            if (el.name().equals(name)) {
-                return el;
-            }
-        }
-        throw new IllegalArgumentException("No such element with name: " + name);
+        return values;
     }
 
     @Override
     public CharElement[] heroElements() {
-        return heroElements.stream()
-                .map(name -> valueOf(name))
-                .collect(toList())
+        return heroElements
                 .toArray(CharElement[]::new);
     }
 }

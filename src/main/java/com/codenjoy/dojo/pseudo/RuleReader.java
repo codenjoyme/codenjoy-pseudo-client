@@ -27,6 +27,7 @@ import com.codenjoy.dojo.services.Direction;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -52,7 +53,7 @@ public class RuleReader {
     public void load(Rules rules, File file) {
         validate(file);
         
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), WebSocketRunner.UTF8))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
 
             Supplier<String> lines = () -> {
                 try {

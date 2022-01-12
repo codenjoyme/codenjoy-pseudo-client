@@ -23,6 +23,8 @@ package com.codenjoy.dojo.pseudo;
  */
 
 import com.codenjoy.dojo.client.AbstractBoard;
+import com.codenjoy.dojo.client.ElementsMap;
+import com.codenjoy.dojo.games.a2048.Element;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.printer.CharElement;
 
@@ -41,19 +43,17 @@ public class RuleBoard extends AbstractBoard<CharElement> {
         }
     };
 
+    private ElementsMap<CharElement> map;
     private ElementReader elements;
 
     public RuleBoard(ElementReader elements) {
         this.elements = elements;
+        this.map = new ElementsMap<>(elements.values());
     }
 
     @Override
-    public CharElement valueOf(char ch) {
-        try {
-            return elements.mapper().apply(ch);
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
+    public CharElement[] elements() {
+        return elements.values();
     }
 
     @Override
@@ -68,7 +68,17 @@ public class RuleBoard extends AbstractBoard<CharElement> {
     public String toString() {
         return boardAsString();
     }
-    
+
+    @Override
+    public CharElement valueOf(char ch) {
+        try {
+            return super.valueOf(ch);
+        } catch (IllegalArgumentException e) {
+            // пропускаем все неизвестные игре символы, типа '?'
+            return null;
+        }
+    }
+
     // TODO refactor me
     public boolean isNearHero(Pattern pattern) {
         Point meAtMap = this.getFirst(elements.heroElements());
