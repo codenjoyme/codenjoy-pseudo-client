@@ -44,6 +44,7 @@ public class Synonyms {
     }
     
     public boolean match(Character mask, char real) {
+        // TODO do not use map.containsKey just check that map.get() != null
         return map.containsKey(mask) && map.get(mask).contains(real);     
     }
 

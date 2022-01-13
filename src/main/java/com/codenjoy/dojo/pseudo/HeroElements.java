@@ -144,6 +144,7 @@ public class HeroElements {
     }
 
     public static List<CharElement> get(String game) {
+        // TODO do not use map.containsKey just check that map.get() != null
         if (!map.containsKey(game)) {
             throw new UnsupportedOperationException(
                     "Game not implemented in pseudo: " + game);
