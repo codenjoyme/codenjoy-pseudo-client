@@ -24,7 +24,6 @@ package com.codenjoy.dojo.pseudo;
 
 import com.codenjoy.dojo.client.AbstractBoard;
 import com.codenjoy.dojo.client.ElementsMap;
-import com.codenjoy.dojo.games.a2048.Element;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.printer.CharElement;
 
@@ -116,6 +115,6 @@ public class RuleBoard extends AbstractBoard<CharElement> {
     }
 
     public boolean isGameOver() {
-        return get(elements.heroElements()).isEmpty();
+        return getFirst(elements.heroElements()) == null;
     }
 }
