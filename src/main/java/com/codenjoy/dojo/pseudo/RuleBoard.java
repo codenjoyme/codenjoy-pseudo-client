@@ -57,7 +57,7 @@ public class RuleBoard extends AbstractBoard<CharElement> {
 
     @Override
     public CharElement getAt(int x, int y) {
-        if (isOutOfField(x, y)) {
+        if (isOutOf(x, y)) {
             return OUT_OF_FIELD;
         }
         return super.getAt(x, y);
